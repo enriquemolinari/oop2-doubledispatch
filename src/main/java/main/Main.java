@@ -7,33 +7,19 @@ public class Main {
     public static void main(String[] args) {
         // Opciones posibles
         String[] opciones = {"piedra", "papel", "tijera"};
-
         // Crear un objeto Scanner para leer la entrada del usuario
         Scanner scanner = new Scanner(System.in);
         boolean continuar = true;
-
         while (continuar) {
-
             String eleccionUsuario = elegirElementoUsuario(scanner);
             String eleccionComputadora = elegirElementoComputadora(opciones);
 
             // Mostrar las elecciones de ambos jugadores
             System.out.println("Tu elección: " + eleccionUsuario);
             System.out.println("Elección de la computadora: " + eleccionComputadora);
-
-            // Determinar el resultado del juego
-            String resultado;
-            if (eleccionUsuario.equals(eleccionComputadora)) {
-                resultado = "¡Es un empate!";
-            } else if ((eleccionUsuario.equals("piedra") && eleccionComputadora.equals("tijera")) ||
-                    (eleccionUsuario.equals("papel") && eleccionComputadora.equals("piedra")) ||
-                    (eleccionUsuario.equals("tijera") && eleccionComputadora.equals("papel"))) {
-                resultado = "¡Ganaste!";
-            } else {
-                resultado = "¡Perdiste!";
-            }
+            
             // Mostrar el resultado
-            System.out.println(resultado);
+            System.out.println(new Jugada().jugar(eleccionUsuario, eleccionComputadora));
 
             continuar = preguntarSiQueremosContinuar();
         }// end while
